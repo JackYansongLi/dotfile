@@ -1,0 +1,83 @@
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
+
+# .. more yabai startup stuff
+
+# .. more yabai startup stuff
+# default layout (can be bsp, stack or float)
+yabai -m config layout bsp
+
+# disable window shadow
+# yabai -m config window_shadow off
+
+yabai -m config external_bar               all:40:0       \
+                window_zoom_persist        off            \
+                window_placement           second_child   \
+                window_shadow              float          \
+                window_opacity             on             \
+                window_opacity_duration    0.2            \
+                active_window_opacity      1.0            \
+                normal_window_opacity      0.8            \
+                window_animation_duration  0.5            \
+                window_animation_easing    ease_out_quint \
+                insert_feedback_color      0xff9dd274     \
+
+
+# new window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# padding set to 1px
+yabai -m config top_padding 5
+yabai -m config bottom_padding 5
+yabai -m config left_padding 5
+yabai -m config right_padding 5
+yabai -m config window_gap 5
+
+# -- mouse settings --
+
+# center mouse on window with focus
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autofocus
+
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier alt
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2 resize
+
+# when window is dropped in center of another window, swap them (on edges it will split it)
+yabai -m mouse_drop_action swap
+
+
+# disable specific apps
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
+# yabai -m rule --add app="^Zotero$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^WeChat$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+# yabai -m rule --add app="^Slack$" manage=off
+yabai -m rule --add app="^zoom.us$" manage=off
+# yabai -m rule --add app="^NetEaseMusic$" manage=off
+yabai -m rule --add app="^BaiduNetdisk$" manage=off
+yabai -m rule --add app="^Podcasts$" manage=off
+yabai -m rule --add app="^The Unarchiver$" manage=off
+yabai -m rule --add app="^Cemu$" manage=off
+yabai -m rule --add app="^QQ$" manage=off
+yabai -m rule --add app="^Mogan Research$" manage=off
+yabai -m rule --add app="^Parallels Desktop$" manage=off
+yabai -m rule --add app="^Cisco Secure Client$" manage=off
+yabai -m rule --add app="^octave-gui$" manage=off
+yabai -m rule --add app="^MATLAB$" manage=off
+
+# Make yabai window manager aware of sketchybar
+yabai -m config external_bar all:32:0
+
+# enable jankyboarder
+# borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+# borders
